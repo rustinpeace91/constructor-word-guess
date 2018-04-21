@@ -29,18 +29,4 @@ var Word = function(word){
 }
 
 
-
-test = new Word("albatross");
-test.createArray();
-test.checkWord("a");
-test.checkWord("l");
-test.checkWord("t");
-test.checkWord("r");
-test.checkWord("o");
-
-
-test.checkWord("s");
-test.checkWord("b");
-
-
-
+module.exports = Word;

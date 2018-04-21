@@ -12,7 +12,7 @@ var Letter = function(letter){
     this.checkIfGuessed = function(guess){
         if(guess === this.letter){
             this.guessed = true;
-
+            console.log("correct!")
         } 
     };
 
