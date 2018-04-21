@@ -41,6 +41,7 @@ var guessesLeft = 15;
 var game = function(){ 
     guessesLeft = 15;
     randomize();
+    
     guess();
 }
 
@@ -49,11 +50,19 @@ function randomize(){
     var randomInt = Math.floor(Math.random() * indexWordArray.length);
     var theWord = indexWordArray[randomInt];
     testWord = new Word(theWord);
+    testWord.createArray();
 }
 
 
 //the guess loop. takes user input and lets the user know if they guessed it correctly
 function guess(){ 
+    if(guessesLeft <=0 ){
+        console.log("you lose!");
+        process.exit();
+    }
+
+//still need to impliment a win condition, a way to validate to make sure that hte user doesn't type more than one letter
+
   inquirer.prompt(
     {
         type: 'input',

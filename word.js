@@ -25,7 +25,6 @@ var Word = function (word) {
         } else {
             for (var i = 0; i < this.wordObjectArray.length; i++) {
                 this.wordObjectArray[i].checkIfGuessed(letter);
-            
             }
             return true;
         }
