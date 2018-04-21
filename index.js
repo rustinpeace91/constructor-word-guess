@@ -31,11 +31,16 @@ var Word = require("./word.js");
 
 
 var indexWordArray = ["lackadaisical", "albatross", "spectacular", "vigorous", "discovery", "zinc"];
+var testWord = new Word("albatross");  
+var guessesLeft = 15;
 
-//make a function that pics a random word every time the user starts the game. 
-var testWord = new Word("albatross");
-var game = function(){
-    
+//make a function that pics a random word every time the user starts the game.
+
+
+
+var game = function(){ 
+    guessesLeft = 15;
+    guess();
 }
 
 function guess(){ 
@@ -46,16 +51,18 @@ function guess(){
         message: "guess a letter",
     }
   ).then(function(answer){
-        if(testWord.checkWord(answer.letter)){
-            console.log("yipeee");
+    
+        if(testWord.checkWord(answer.letter) === false){
+            console.log("wrong guess");
             guess();
+            guessesLeft --;
+            console.log("you have " + guessesLeft + " guesses left");
         } else {
-            console.log("wrong letter");
-            testWord.checkWord(answer.letter);
+            console.log("correct!");
             guess();
         }
         //find a way to make it so it does something if the user guesses correctly. 
   });
 };
 
-guess();
+game();
