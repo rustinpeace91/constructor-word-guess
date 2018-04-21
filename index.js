@@ -37,12 +37,22 @@ var guessesLeft = 15;
 //make a function that pics a random word every time the user starts the game.
 
 
-
+//the main game function
 var game = function(){ 
     guessesLeft = 15;
+    randomize();
     guess();
 }
 
+//randomizes the word to be guessed
+function randomize(){
+    var randomInt = Math.floor(Math.random() * indexWordArray.length);
+    var theWord = indexWordArray[randomInt];
+    testWord = new Word(theWord);
+}
+
+
+//the guess loop. takes user input and lets the user know if they guessed it correctly
 function guess(){ 
   inquirer.prompt(
     {
@@ -54,15 +64,21 @@ function guess(){
     
         if(testWord.checkWord(answer.letter) === false){
             console.log("wrong guess");
+            testWord.returnString();
             guess();
             guessesLeft --;
             console.log("you have " + guessesLeft + " guesses left");
+ 
         } else {
             console.log("correct!");
+            //this is supposed to return the string of the letters guessed and _ for those not guessed. It does not work for some reason. 
+            testWord.returnString();
             guess();
+
         }
-        //find a way to make it so it does something if the user guesses correctly. 
   });
 };
 
+
+//runs the game
 game();
